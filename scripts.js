@@ -18,7 +18,7 @@ function divide(x, y) {
   if (y === 0) {
     alert("Error divide by zero");
     clear();
-    return 0;
+    return NaN;
   }
   return x / y;
 }
@@ -49,7 +49,11 @@ function calculate(e) {
   } else if (btn.id === 'equals') {
     let answer = operate(command, storedNumber, displayNumber);
     displayNumber = answer;
-    screen.innerHTML = String(answer);
+    if (answer % 1 === 0) {
+      screen.innerHTML = String(answer);
+    } else {
+      screen.innerHTML = answer.toFixed(2);
+    }
   } else if (btn.id === 'clear') {
     clear();
   }
